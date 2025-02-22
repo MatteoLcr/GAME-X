@@ -1,0 +1,502 @@
+body {
+    background-color: rgb(21, 21, 21);
+}
+
+
+/* CARD */
+.gameCardArea {
+    width: 85%;
+    margin-top: 100px;
+}
+
+.gameCard {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: rgb(36, 36, 36);
+    color: whitesmoke;
+    opacity: 0.9;
+}
+
+.gameCard:hover {
+    cursor: pointer;
+    scale: 1.01;
+    opacity: 2;
+}
+
+.consolleIcons {
+    color: rgba(245, 245, 245, 0.835);
+}
+
+
+/* LOGIN E REGISTER */
+.formRegister {
+    padding: 20PX;
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.217);
+    color: whitesmoke;
+}
+
+
+/* NAVBAR */
+.navbar {
+    height: 60px;
+    background-color: rgba(11, 11, 11, 0);
+    backdrop-filter: blur(10px);
+    color: whitesmoke;
+    z-index: 999999;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formSearchBar {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.searchBar {
+    width: 1200px;
+    background-color: rgb(32, 32, 32);
+    border: 1px solid rgba(255, 255, 255, 0.217);
+    margin-left: 200px;
+}
+
+.searchBar::placeholder {
+    color: whitesmoke;
+    opacity: 0.5;
+}
+
+.dropdownUserAuth {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    border: transparent;
+    color: whitesmoke;
+}
+
+.userImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: orangered;
+}
+
+.hamburgerBtn {
+    border: transparent;
+    background-color: transparent;
+}
+
+.noAuthNavEl1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+}
+
+.authNavEl1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+}
+
+.noAuthNavEl {
+    display: none;
+}
+
+.authNavEl {
+    display: none;
+}
+
+.logoutBtn {
+    width: 90px;
+    border-radius: 5px;
+    border: transparent;
+    background-color: rgb(255, 0, 0);
+    color: whitesmoke;
+}
+
+navbar-collapse {
+    display: none !important;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: whitesmoke;
+    width: 250px;
+    min-height: 100vh;
+    max-height: 100vh;
+    border-right: 1px solid rgba(255, 183, 0, 0.76);
+    box-shadow: 0px 0px 40px rgba(255, 217, 0, 0.709);
+    background-color: rgb(13, 13, 13);
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 1;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.genName {
+    position: absolute;
+    bottom: 525px;
+    right: 0;
+    rotate: -90deg;
+    font-size: 85px;
+    font-weight: 800;
+    z-index: -1;
+}
+
+.genName::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 0, 0, 0.436); */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26%, rgba(0, 0, 0, 1) 100%);
+}
+
+.genresBox {
+    margin-top: 130px;
+}
+
+.genreList {
+    height: 400px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    margin-bottom: 50px;
+}
+
+.genreList::after {
+    content: "";
+    position: absolute;
+    top: 145px;
+    left: 0;
+    width: 100%;
+    height: 430px;
+    background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 70%, rgba(13, 13, 13, 1) 100%);
+    pointer-events: none;
+}
+
+.genreList::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* consolle */
+.consolleBox {
+    height: 280px;
+    margin-left: 50px;
+    /* background-color: aqua; */
+}
+
+.consolleList {
+    height: 400px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    margin-bottom: 200px;
+}
+
+.consolleList::after {
+    content: "";
+    position: absolute;
+    top: 610px;
+    left: 125px;
+    width: 120px;
+    height: 300px;
+    /* border: 1px solid rgba(255, 255, 255, 0.217); */
+    background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 70%, rgba(13, 13, 13, 1) 100%);
+    pointer-events: none;
+}
+
+.consolleList::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.consolleName {
+    position: absolute;
+    bottom: 130px;
+    right: 5px;
+    rotate: -90deg;
+    font-size: 60px;
+    font-weight: 800;
+    z-index: -1;
+}
+
+.consolleName::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    width: 100%;
+    height: 110%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* SWIPER */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* PAGINA DEL SINGOLO GIOCO */
+.immagineSfondo {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.immagineSfondo::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 12px;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(21, 21, 21) 70%);
+    pointer-events: none;
+}
+
+.paginaDettaglioBoxInfo {
+    color: whitesmoke;
+    /* background-color: aqua; */
+    margin-top: 150px;
+}
+
+.BoxInfoSx {
+    margin-left: 250px;
+    /* background-color: blue; */
+}
+
+.centralRankingItem {
+    border-left: 1px solid rgba(255, 255, 255, 0.217);
+    border-right: 1px solid rgba(255, 255, 255, 0.217);
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* .BoxInfoDx {
+    background: red;
+} */
+
+.consolleIcons2 {
+    font-size: 20px;
+}
+
+.paginaDettaglioTitleGame {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.addPrefeBtn {
+    height: 50px;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.516);
+    border: none;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.addPrefeBtn:hover {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    color: rgb(36, 36, 36);
+}
+
+.removePrefeBtn {
+    height: 50px;
+    width: 200px;
+    background-color: rgba(255, 0, 0, 0.516);
+    border: none;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.removePrefeBtn:hover {
+    cursor: pointer;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.reviewBtn {
+    height: 50px;
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.rating-bar-container {
+    margin-bottom: 10px;
+}
+
+.rating-bar {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.105);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rating-fill {
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.boxRecensioni {
+    padding: 20px;
+    color: whitesmoke;
+    background-color: rgba(0, 149, 255, 0.088);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.217);
+}
+
+
+
+/* PROFILO UTENTE */
+
+.profiloUtenteContainer {
+    width: 85%;
+    margin-top: 100px;
+}
+
+/* SEZ USER */
+.boxInfoUser {
+    border: 1px solid rgba(255, 255, 255, 0.217);
+    border-radius: 10px;
+    padding: 20px;
+    color: whitesmoke;
+}
+
+/* SEZ PREFERITI */
+.favItem {
+    height: 100px;
+    width: 500px;
+}
+
+.userProfileFavBtn {
+    height: 25px;
+    width: 80px;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+
+    .navbar-collapse {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        width: 100%;
+        background-color: rgb(57, 57, 57);
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.407);
+    }
+
+    .noAuthNavEl1 {
+        display: none;
+    }
+
+    .authNavEl1 {
+        display: none;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .noAuthNavEl {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+    }
+
+    .authNavEl {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+    }
+
+    .formSearchBar {
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+
+    .searchBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        background-color: rgb(32, 32, 32);
+        border: 1px solid rgba(255, 255, 255, 0.217);
+    }
+
+    /* GAME CARD */
+    .gameCardArea {
+        width: 100%;
+        margin-top: 100px;
+    }
+
+}
