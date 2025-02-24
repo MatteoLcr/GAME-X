@@ -55,7 +55,7 @@ export default function Game() {
 
 
     // API YOUTUBE
-    // const API_KEY = 'AIzaSyAv_QWajLN5nWFK9dJsPqMLspoKb1Hp1T0';
+    const API_KEY = 'AIzaSyAv_QWajLN5nWFK9dJsPqMLspoKb1Hp1T0';
     const gameName = '';
     useEffect(() => {
         async function fetchTrailer(gameName) {
