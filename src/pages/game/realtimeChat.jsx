@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import supabase from "../../supabase/client";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime"; 
 
+dayjs.extend(relativeTime);
 
 export default function RealtimeChat({ game }) {
     const [messages, setMessages] = useState([]);
@@ -58,12 +61,14 @@ export default function RealtimeChat({ game }) {
 
 
     return (
-        <div className="boxAllMessages bg-success" ref={messagesRef}>
+        <div className="boxAllMessages " ref={messagesRef}>
             {messages && messages.map((message) => (
-                <div key={message.id}>
-                    <p>{message.profile_user_name}</p>
-                    <p>{message.content}</p>
-                    <p>{message.created_at}</p>
+                <div key={message.id} className="boxMessage my-1">
+                    <div className="d-flex">
+                        <p className="mx-2 text-warning">{message.profile_user_name}</p>
+                        <p className="ms-2">{dayjs(message.created_at).fromNow()}</p>
+                    </div>
+                    <p className="ms-2 text-white">{message.content}</p>
                 </div>
             ))}
         </div>

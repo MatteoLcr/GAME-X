@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 import supabase from '../supabase/client';
@@ -9,14 +9,43 @@ export default function Navbar() {
     const [query, setQuery] = useState('');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { session, user } = useContext(SessionContext)
+    const [avaterUrl, setAvatarUrl] = useState("");
+    const [username, setUsername] = useState("");
+
+    console.log(avaterUrl);
 
     async function signOut() {
         await supabase.auth.signOut();
     }
 
-    
-    return (
+    // RECUPER CREDENZIALI USER (NOT SESSION)
+    useEffect(() => {
+        let ignore = false;
+        async function getProfile() {
+            const { user } = session;
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('username, avatar_url')
+                .eq('id', user.id)
+                .single();
 
+            if (!ignore) {
+                if (error) {
+                    console.warn(error);
+                } else if (data) {
+                    setUsername(data.username);
+                    setAvatarUrl(data.avatar_url);
+                    console.log("Avatar URL:", data.avatar_url);
+                }
+            }
+        }
+        getProfile();
+        return () => {
+            ignore = true;
+        };
+    }, [session]);
+
+    return (
         <nav className="navbar navbar-expand-lg fixed-top">
             <div className="container-fluid navContainer mx-5">
 
@@ -42,8 +71,8 @@ export default function Navbar() {
                     <div className="btn-group authNavEl1">
 
                         <button type="button" className="dropdownUserAuth dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div className='userImg me-2'></div>
-                            <h6>ciao {user.user_metadata.first_name} </h6>
+                            <img className='userImg me-2' src={avaterUrl} alt="" />
+                            <h6 className='mt-2'>ciao {username} </h6>
                         </button>
 
                         <ul className="dropdown-menu">

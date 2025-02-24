@@ -21,7 +21,7 @@ export default function Home() {
         setError(null);
 
         try {
-            const response = await fetch(`https://api.rawg.io/api/games?key=355f36fb0e92466180e287434f6f63c4&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
+            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
             const data = await response.json();
 
             if (data.results) {

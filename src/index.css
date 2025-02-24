@@ -83,7 +83,7 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: orangered;
+    /* background-color: orangered; */
 }
 
 .hamburgerBtn {
@@ -397,6 +397,56 @@ navbar-collapse {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.217);
 }
+
+/*!! LIVE CHAT */
+.chatContainer {
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.217);
+    border-radius: 5px;
+}
+.formChat{
+    background-color: #2A3942;
+}
+
+.insertMessage{
+    height: 40px;
+    width: 100%;
+    background: #2A3942;
+    color: whitesmoke;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.217);
+}
+.sendChatBtn{
+    height: 40px;
+    width: 80px;
+    color: whitesmoke;
+    background-color: transparent;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+.sendChatBtn:hover{
+    background-color: green;
+}
+
+.boxAllMessages{
+    background-color: transparent;
+    overflow-y: auto;
+    height: 300px;
+    scrollbar-width: none;
+}
+
+.boxMessage{
+    padding: 5px;
+    color: whitesmoke;
+    background-color: rgb(38, 38, 38);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.217);
+}
+
+
+
+
+
 
 
 

@@ -31,12 +31,12 @@ export default function Chat({ game, session }) {
 
 
     return (
-        <div className="chatGaeContainer">
+        <div className="chatContainer my-5">
             <RealtimeChat game={game} />
-            <div className="formChat">
-                <form onSubmit={HandleMessageSubmit}>
-                    <textarea type="text" name="message" />
-                    <button>Invia</button>
+            <div className="">
+                <form onSubmit={HandleMessageSubmit} className="formChat d-flex p-2">
+                    <textarea type="text" name="message" className="insertMessage" />
+                    <button className="sendChatBtn ms-2">Invia</button>
                 </form>
             </div>
         </div>

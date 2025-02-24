@@ -12,8 +12,11 @@ export default function Login() {
 
     const HandleLogin = async (event) => {
         event.preventDefault();
+        console.log("HandleLogin chiamato!");
         const formRegister = event.currentTarget;
         const { email, password } = Object.fromEntries(new FormData(formRegister));
+        console.log("Email:", email, "Password:", password);
+
 
         if (!email || !password) {
             toast.error("Email e password sono obbligatori!");

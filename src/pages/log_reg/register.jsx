@@ -13,9 +13,8 @@ export default function Register() {
     const HandleRegister = async (event) => {
         event.preventDefault();
         const formRegister = event.currentTarget
-        const { email, password, first_name, last_name, username } = Object.fromEntries(new FormData(formRegister))
+        const { email, password, first_name, last_name, username } = Object.fromEntries(new FormData(formRegister));
 
-        // LOGICA PER STORARE L'IMMAGINE DEL PROFILO NEL DATABASE
         const file = formRegister.avatar_url.files[0];
         let avatarUrl = null;
         if (file) {
@@ -28,9 +27,9 @@ export default function Register() {
                 toast.error("Errore durante il caricamento dell'immagine");
                 return;
             }
-            avatarUrl = supabase.storage.from('avatars').getPublicUrl(filePath).publicURL;
+            avatarUrl = supabase.storage.from('avatars').getPublicUrl(filePath).data.publicUrl;
         }
-
+        
         // INSERIMENTO DI TUTTI I DATI DEL FORM NEL DATABASE
         let { data, error } = await supabase.auth.signUp({
             email,
@@ -43,7 +42,8 @@ export default function Register() {
                     avatar_url: avatarUrl
                 }
             }
-        })
+        });
+
         if (error) {
             toast.error(error.message);
         } else {

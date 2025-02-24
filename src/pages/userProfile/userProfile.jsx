@@ -6,10 +6,8 @@ export default function UserProfile() {
 
     const { favourites, removeFavouriteGame2 } = useContext(FavouritesGameContext);
     const { session } = useContext(SessionContext);
-    console.log(session.user.user_metadata);
 
     useEffect(() => {
-        console.log(favourites);
     }, [favourites]);
 
     return (
@@ -36,6 +34,7 @@ export default function UserProfile() {
 
                             <img src={session.user.user_metadata.avatar_url} alt="" />
                             {/* <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" /> */}
+                            <img src={`https://mobodxkiijlcuhicslbi.supabase.co/storage/v1/object/public/avatars/avatars/${session.user.user_metadata.avatar_url}`} alt="" />
                             <div>
                                 <h5>{session.user.user_metadata.first_name}</h5>
                                 <h5>{session.user.user_metadata.last_name}</h5>

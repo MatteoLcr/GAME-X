@@ -9,8 +9,6 @@ import SessionContext from "../../context/sessionContext";
 import FavouritesGameContext from "../../context/favouritesGame/favouritesGameContext";
 // import ReviewContext from "../../context/review/revievContext";
 import Chat from "../../pages/game/chat";
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -56,7 +54,7 @@ export default function Game() {
     const [review, setReview] = useState([]);
 
     // API YOUTUBE
-    const API_KEY = 'AIzaSyAv_QWajLN5nWFK9dJsPqMLspoKb1Hp1T0';
+    // const API_KEY = 'AIzaSyAv_QWajLN5nWFK9dJsPqMLspoKb1Hp1T0';
     const gameName = '';
     useEffect(() => {
         async function fetchTrailer(gameName) {
@@ -83,7 +81,7 @@ export default function Game() {
     // API PER RICERCA GIOCHI SUGGERITI
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=355f36fb0e92466180e287434f6f63c4&genres=${category_name}&page=1&page_size=24&ordering=-added`);
+            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&genres=${category_name}&page=1&page_size=24&ordering=-added`);
             const data = await response.json();
             setGameSuggeriti(data.results);
         }
@@ -99,7 +97,7 @@ export default function Game() {
     }, [session, game.id]);
 
     // todo FUNZIONI PER LE RECENSIONI
-    // INSERT DATA
+    // INSERT DATA REVIEW
     const HandleFormSubmit = async (event) => {
         event.preventDefault();
         const review = event.currentTarget;
@@ -109,6 +107,7 @@ export default function Game() {
             .insert([
                 {
                     profile_id: session.user.id,
+                    username: session.user.user_metadata.username,
                     game_id: game.id,
                     game_name: game.name,
                     review_title: review_title,
@@ -125,7 +124,7 @@ export default function Game() {
             if (game) {
                 let { data: review, error } = await supabase
                     .from("reviews")
-                    .select("*")
+                    .select("*, profiles(username)")
                     .eq("game_id", game.id);
                 if (error) {
                     console.log(error);
@@ -157,7 +156,7 @@ export default function Game() {
                 <div className="row paginaDettaglioBoxInfo d-flex justify-content-center">
 
                     <div className="col-4 BoxInfoSx d-flex flex-column mt-4">
-                    {/* LOGHI CONSOLLE */}
+                        {/* LOGHI CONSOLLE */}
                         <div className="d-flex">
                             {game.parent_platforms && game.parent_platforms.length > 0 && (
                                 <div className="d-flex">
@@ -301,7 +300,7 @@ export default function Game() {
                                                 ))}
                                             </div>
                                             <div className="d-flex justify-content-center mt-3">
-                                                <p>{session.user.user_metadata.username},</p>
+                                                <p>{review.profiles.username},</p>
                                                 <p className="text-secondary ms-2">{new Date(review.created_at).toLocaleString("it-IT", {
                                                     day: "2-digit",
                                                     month: "2-digit",
@@ -353,7 +352,7 @@ export default function Game() {
             </div>
             <div className="row d-flex justify-content-center"
                 style={{ whidth: "100%" }}>
-                <div className="col-7 my-5 bg-danger">
+                <div className="col-7">
                     {session && (
                         <Chat game={game} session={session} />
                     )}
