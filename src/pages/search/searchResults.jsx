@@ -1,10 +1,10 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import GameCard from "../../components/gameCard"
 import { useNavigate } from "react-router-dom"
 
 export default function SearchResults() {
-    
+
     const [games, setGames] = useState([])
     const { query } = useParams();
     const navigate = useNavigate()
@@ -20,19 +20,19 @@ export default function SearchResults() {
 
     return (
         <div className="container-fluid">
-            <div className="row">
+            <div className="row gameCardArea d-flex justify-content-center">
                 <div className="col-12">
-                    <h3>Search results for: {query}</h3>
+                    <h3 className="text-white mb-3">Search results for: {query}</h3>
                 </div>
-                <div className="row">
-                    {games.map((game) => (
-                        <div className="col-12 col-md-3"
+            </div>
+            <div className="row gameCardArea d-flex justify-content-center">
+                {games.map((game) => (
+                    <div className="col-12 col-md-3"
                         key={game.id}
                         onClick={() => navigate(`/show-game/${game.id}/${game.name}`)}>
-                            <GameCard game={game}/> 
-                        </div>
-                    ))}
-                </div>
+                        <GameCard game={game} />
+                    </div>
+                ))}
             </div>
         </div>
     )
