@@ -21,7 +21,7 @@ export default function Home() {
         setError(null);
 
         try {
-            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
+            const response = await fetch(`https://api.rawg.io/api/games?key=493fa9296bbc488eb279a7b3f8b6f53c&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
             const data = await response.json();
 
             if (data.results) {
@@ -52,14 +52,14 @@ export default function Home() {
 
     return (
         <div className='container-fluid d-flex justify-content-md-end justify-content-center'>
+            <div>
+                
+            </div>
             <div className="row gameCardArea d-flex justify-content-center">
                 {games.map((game) => (
                     <div className="col-12 col-md-3"
-                        key={game.id}
-                    >
-                        <Link to={`/show-game/${game.id}/${game.name}`} state={{ game }}>
+                        key={game.id}>
                             <GameCard game={game} />
-                        </Link>
                     </div>
                 ))}
 

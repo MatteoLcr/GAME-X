@@ -9,10 +9,8 @@ export default function Navbar() {
     const [query, setQuery] = useState('');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { session, user } = useContext(SessionContext)
-    const [avaterUrl, setAvatarUrl] = useState("");
+    const [avatarUrl, setAvatarUrl] = useState("");
     const [username, setUsername] = useState("");
-
-    console.log(avaterUrl);
 
     async function signOut() {
         await supabase.auth.signOut();
@@ -35,7 +33,6 @@ export default function Navbar() {
                 } else if (data) {
                     setUsername(data.username);
                     setAvatarUrl(data.avatar_url);
-                    console.log("Avatar URL:", data.avatar_url);
                 }
             }
         }
@@ -71,7 +68,7 @@ export default function Navbar() {
                     <div className="btn-group authNavEl1">
 
                         <button type="button" className="dropdownUserAuth dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img className='userImg me-2' src={avaterUrl} alt="" />
+                        <img className='userImg me-2' src={avatarUrl || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="" />
                             <h6 className='mt-2'>ciao {username} </h6>
                         </button>
 

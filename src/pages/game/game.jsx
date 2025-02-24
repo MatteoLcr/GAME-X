@@ -4,15 +4,14 @@ import { Toaster } from "sonner";
 import { FaStar, FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from "react-icons/fa";
 import { SiNintendoswitch, SiAtari, SiSega, SiAmazonlumberyard } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import supabase from "../../supabase/client";
 import SessionContext from "../../context/sessionContext";
 import FavouritesGameContext from "../../context/favouritesGame/favouritesGameContext";
-// import ReviewContext from "../../context/review/revievContext";
 import Chat from "../../pages/game/chat";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
 
 const colors = ["#4caf50", "#2196F3", "#FF9800", "#E91E63", "#9C27B0"];
 const platformIcons = {
@@ -52,6 +51,8 @@ export default function Game() {
     const favouritesContext = useContext(FavouritesGameContext);
     const isFavourite = favourites.some(fav => fav.game_id === game.id);
     const [review, setReview] = useState([]);
+    const userProfileImage = session?.user?.user_metadata?.avatar_url;
+
 
     // API YOUTUBE
     // const API_KEY = 'AIzaSyAv_QWajLN5nWFK9dJsPqMLspoKb1Hp1T0';
@@ -81,7 +82,7 @@ export default function Game() {
     // API PER RICERCA GIOCHI SUGGERITI
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&genres=${category_name}&page=1&page_size=24&ordering=-added`);
+            const response = await fetch(`https://api.rawg.io/api/games?key=493fa9296bbc488eb279a7b3f8b6f53c&genres=${category_name}&page=1&page_size=24&ordering=-added`);
             const data = await response.json();
             setGameSuggeriti(data.results);
         }
@@ -102,12 +103,11 @@ export default function Game() {
         event.preventDefault();
         const review = event.currentTarget;
         const { review_title, review_content, rate } = Object.fromEntries(new FormData(review));
-        const { error } = await supabase
+        const { data, error } = await supabase
             .from("reviews")
             .insert([
                 {
                     profile_id: session.user.id,
-                    username: session.user.user_metadata.username,
                     game_id: game.id,
                     game_name: game.name,
                     review_title: review_title,
@@ -116,8 +116,21 @@ export default function Game() {
                 },
             ])
             .select();
-        review.reset();
+        if (error) {
+            console.log('Errore nell\'inserimento della recensione:', error);
+        } else {
+            setReview((prevReviews) => [
+                ...prevReviews,
+                {
+                    ...data[0],
+                    profiles: { username: session.user.user_metadata.username },
+                }
+            ]);
+        }
+        review.reset(); 
     };
+
+
     // READ DATA
     useEffect(() => {
         const readReviews = async () => {
@@ -135,7 +148,6 @@ export default function Game() {
         };
         readReviews();
     }, [game]);
-
 
     return (
         <div className="container-fluid">
@@ -354,7 +366,7 @@ export default function Game() {
                 style={{ whidth: "100%" }}>
                 <div className="col-7">
                     {session && (
-                        <Chat game={game} session={session} />
+                        <Chat game={game} session={session} userProfileImage={userProfileImage} />
                     )}
                 </div>
             </div>

@@ -9,26 +9,24 @@ export default function Category() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&genres=${category}&page=1&page_size=24&ordering=-added`)
+            const response = await fetch(`https://api.rawg.io/api/games?key=493fa9296bbc488eb279a7b3f8b6f53c&genres=${category}&page=1&page_size=24&ordering=-added`)
             const data = await response.json()
             setSelectedGenre(data.results)
         }
         fetchData()
-    }, [ selectedGenre ])
+    }, [selectedGenre])
 
     return (
-        <div className="container-fluid">
-            <div className="row">
+        <div className="container-fluid d-flex justify-content-md-end justify-content-center">
+            <div className="row gameCardArea d-flex justify-content-center">
                 <div className="col-12">
-                    <h3>Tutti i giochi della categoria: {category}</h3>
+                    <h3 className="text-white mb-3">Tutti i giochi della categoria: {category}</h3>
                 </div>
-                <div className="row">
-                    {selectedGenre.map((game) => (
-                        <div className="col-12 col-md-3" key={game.id}>
-                            <GameCard game={game}/> 
-                        </div>
-                    ))}
-                </div>
+                {selectedGenre.map((game) => (
+                    <div className="col-12 col-md-3" key={game.id}>
+                        <GameCard game={game} />
+                    </div>
+                ))}
             </div>
         </div>
     );

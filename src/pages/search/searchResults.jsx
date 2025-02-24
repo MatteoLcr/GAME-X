@@ -11,7 +11,7 @@ export default function SearchResults() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=ec2872a2f5ac4778a8ca720e3a416946&search=${query}&page=1&page_size=24&ordering=-added`)
+            const response = await fetch(`https://api.rawg.io/api/games?key=493fa9296bbc488eb279a7b3f8b6f53c&search=${query}&page=1&page_size=24&ordering=-added`)
             const data = await response.json()
             setGames(data.results)
         }

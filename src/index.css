@@ -6,7 +6,7 @@ body {
 /* CARD */
 .gameCardArea {
     width: 85%;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .gameCard {
@@ -25,6 +25,21 @@ body {
 
 .consolleIcons {
     color: rgba(245, 245, 245, 0.835);
+}
+
+.addPrefeBtnCard {
+    height: 35px;
+    color: whitesmoke;
+    background-color: transparent;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+
+.removePrefeBtnCard {
+    height: 35px;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 5px;
 }
 
 
@@ -404,11 +419,12 @@ navbar-collapse {
     border: 1px solid rgba(255, 255, 255, 0.217);
     border-radius: 5px;
 }
-.formChat{
+
+.formChat {
     background-color: #2A3942;
 }
 
-.insertMessage{
+.insertMessage {
     height: 40px;
     width: 100%;
     background: #2A3942;
@@ -416,7 +432,8 @@ navbar-collapse {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.217);
 }
-.sendChatBtn{
+
+.sendChatBtn {
     height: 40px;
     width: 80px;
     color: whitesmoke;
@@ -424,18 +441,19 @@ navbar-collapse {
     border: 2px solid green;
     border-radius: 5px;
 }
-.sendChatBtn:hover{
+
+.sendChatBtn:hover {
     background-color: green;
 }
 
-.boxAllMessages{
+.boxAllMessages {
     background-color: transparent;
     overflow-y: auto;
     height: 300px;
     scrollbar-width: none;
 }
 
-.boxMessage{
+.boxMessage {
     padding: 5px;
     color: whitesmoke;
     background-color: rgb(38, 38, 38);

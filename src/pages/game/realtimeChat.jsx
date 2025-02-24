@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import supabase from "../../supabase/client";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime"; 
+import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
 
-export default function RealtimeChat({ game }) {
+export default function RealtimeChat({ game, userProfileImage }) {
     const [messages, setMessages] = useState([]);
     const [loadingInitial, setLoadingInitial] = useState(false);
     const [error, setError] = useState("");
@@ -59,16 +59,24 @@ export default function RealtimeChat({ game }) {
         ScrollSmoothToBottom();
     }, [messages]);
 
-
     return (
         <div className="boxAllMessages " ref={messagesRef}>
             {messages && messages.map((message) => (
-                <div key={message.id} className="boxMessage my-1">
-                    <div className="d-flex">
-                        <p className="mx-2 text-warning">{message.profile_user_name}</p>
-                        <p className="ms-2">{dayjs(message.created_at).fromNow()}</p>
+                <div key={message.id} className="boxMessage my-1 d-flex">
+                    <img
+                        className="userImg"
+                        src={userProfileImage || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                        alt=""
+                    />
+
+                    <div >
+                        <div className="d-flex">
+                            <p className="mx-2 text-warning">{message.profile_user_name}</p>
+                            <p className="ms-2">{dayjs(message.created_at).fromNow()}</p>
+                        </div>
+
+                        <p className="ms-2 text-white">{message.content}</p>
                     </div>
-                    <p className="ms-2 text-white">{message.content}</p>
                 </div>
             ))}
         </div>

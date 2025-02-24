@@ -33,8 +33,12 @@ export default function UserProfile() {
                         <div className="tab-pane fade bg-warning d-flex justify-content-evenly" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
 
                             <img src={session.user.user_metadata.avatar_url} alt="" />
-                            {/* <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" /> */}
-                            <img src={`https://mobodxkiijlcuhicslbi.supabase.co/storage/v1/object/public/avatars/avatars/${session.user.user_metadata.avatar_url}`} alt="" />
+                            <img
+                                src={session.user.user_metadata.avatar_url
+                                    ? `https://mobodxkiijlcuhicslbi.supabase.co/storage/v1/object/public/avatars/avatars/${session.user.user_metadata.avatar_url}`
+                                    : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                                alt=""
+                            />
                             <div>
                                 <h5>{session.user.user_metadata.first_name}</h5>
                                 <h5>{session.user.user_metadata.last_name}</h5>

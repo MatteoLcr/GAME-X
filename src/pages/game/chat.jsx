@@ -5,8 +5,7 @@ import supabase from "../../supabase/client";
 
 
 
-export default function Chat({ game, session }) {
-
+export default function Chat({ game, session, userProfileImage }) {
     async function HandleMessageSubmit(event) {
         event.preventDefault();
         const inputMessage = event.currentTarget
@@ -32,7 +31,7 @@ export default function Chat({ game, session }) {
 
     return (
         <div className="chatContainer my-5">
-            <RealtimeChat game={game} />
+            <RealtimeChat game={game} userProfileImage={userProfileImage}/>
             <div className="">
                 <form onSubmit={HandleMessageSubmit} className="formChat d-flex p-2">
                     <textarea type="text" name="message" className="insertMessage" />
