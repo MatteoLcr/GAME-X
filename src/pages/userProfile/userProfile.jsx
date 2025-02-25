@@ -10,6 +10,9 @@ export default function UserProfile() {
     useEffect(() => {
     }, [favourites]);
 
+
+// console.log(session);
+
     return (
         <div className="container  d-flex flex-column justify-content-end align-items-end">
             <div className="row profiloUtenteContainer">

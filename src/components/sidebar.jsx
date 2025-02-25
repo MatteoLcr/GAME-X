@@ -14,7 +14,7 @@ export default function SideBar() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://api.rawg.io/api/genres?key=493fa9296bbc488eb279a7b3f8b6f53c&page=1');
+            const response = await fetch('https://api.rawg.io/api/genres?key=29c73f1240e84e6cb1a7ade30e62a09c&page=1');
             const data = await response.json();
             setGenres(data.results);
         }
@@ -23,7 +23,7 @@ export default function SideBar() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://api.rawg.io/api/platforms?key=493fa9296bbc488eb279a7b3f8b6f53c&page=1');
+            const response = await fetch('https://api.rawg.io/api/platforms?key=29c73f1240e84e6cb1a7ade30e62a09c&page=1');
             const data = await response.json();
             setPlatforms(data.results);
         }

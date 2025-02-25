@@ -82,7 +82,7 @@ export default function Game() {
     // API PER RICERCA GIOCHI SUGGERITI
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=493fa9296bbc488eb279a7b3f8b6f53c&genres=${category_name}&page=1&page_size=24&ordering=-added`);
+            const response = await fetch(`https://api.rawg.io/api/games?key=29c73f1240e84e6cb1a7ade30e62a09c&genres=${category_name}&page=1&page_size=24&ordering=-added`);
             const data = await response.json();
             setGameSuggeriti(data.results);
         }
@@ -150,12 +150,12 @@ export default function Game() {
     }, [game]);
 
     return (
-        <div className="container-fluid">
-            <div className="row d-flex justify-content-end"
+        <div className="container-fluid ps-0">
+            <div className="rowSingleGame row d-flex justify-content-end"
                 style={{ whidth: "90%" }}>
                 {/* IMMAGINE DI SFONDO */}
                 <div
-                    className="col-11 immagineSfondo">
+                    className="col-md-11 immagineSfondo">
                     {game.background_image && (
                         <img
                             src={game.background_image}
@@ -167,7 +167,7 @@ export default function Game() {
 
                 <div className="row paginaDettaglioBoxInfo d-flex justify-content-center">
 
-                    <div className="col-4 BoxInfoSx d-flex flex-column mt-4">
+                    <div className="col-12 col-md-4 BoxInfoSx d-flex flex-column mt-4">
                         {/* LOGHI CONSOLLE */}
                         <div className="d-flex">
                             {game.parent_platforms && game.parent_platforms.length > 0 && (
@@ -258,7 +258,7 @@ export default function Game() {
                         </div>
 
                         {/* RANKING */}
-                        <div className="d-flex mb-4">
+                        <div className=" d-flex mb-4">
                             <div className="d-flex flex-column align-items-center">
                                 <h3 className="">{game.rating}</h3>
                                 <p className="">Ranking</p>
@@ -297,7 +297,7 @@ export default function Game() {
 
                         {/* REVIEWS */}
                         {review && review.length > 0 ? (
-                            <div className="boxRecensioni mt-5">
+                            <div className="col-12 boxRecensioni mt-5">
                                 <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
                                     {review ? review.map((review) => (
                                         <SwiperSlide key={review.id} className="d-flex flex-column justify-content-center align-items-center">
@@ -332,9 +332,9 @@ export default function Game() {
 
                     </div>
 
-                    <div className="col-5 BoxInfoDx d-flex flex-column justify-content-start">
+                    <div className="col-12 col-md-5 BoxInfoDx d-flex flex-column justify-content-start">
                         {/* TRAILER YPUTUBE*/}
-                        <div className="trailer-container mt-4 ms-2">
+                        <div className="trailer-container mt-4">
                             {trailer ? (
                                 <iframe
                                     width="630"
@@ -350,13 +350,14 @@ export default function Game() {
                             )}
                         </div>
                         {/* SCREENSHOT GIOCO */}
-                        <div>
+                        <div className="col-12 screenshotsGame">
                             {game.short_screenshots ? game.short_screenshots.slice(-6).map((img, index) => (
                                 <img
                                     key={img.id}
                                     className="m-2"
                                     src={img.image} alt=""
-                                    style={{ width: "200px", height: "100px" }} />
+                                    style={{ width: "200px", height: "100px" }} 
+                                    />
                             )) : <p>Nessuno screenshot disponibile</p>}
                         </div>
                     </div>
@@ -364,7 +365,7 @@ export default function Game() {
             </div>
             <div className="row d-flex justify-content-center"
                 style={{ whidth: "100%" }}>
-                <div className="col-7">
+                <div className="col-12 col-md-8 chatBoxGame">
                     {session && (
                         <Chat game={game} session={session} userProfileImage={userProfileImage} />
                     )}

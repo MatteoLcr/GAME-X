@@ -43,11 +43,11 @@ export default function Navbar() {
     }, [session]);
 
     return (
-        <nav className="navbar navbar-expand-lg fixed-top">
-            <div className="container-fluid navContainer mx-5">
+        <nav className="navbar navbar-expand-lg fixed-top ">
+            <div className="container-fluid navContainer ">
 
                 <Link to={'/'}
-                    className="navbar-brand text-white">GAME-X
+                    className="navbar-brand text-white logo">GAME-X
                 </Link>
 
                 <form className="d-flex formSearchBar" role="search">

@@ -56,7 +56,7 @@ body {
 /* NAVBAR */
 .navbar {
     height: 60px;
-    background-color: rgba(11, 11, 11, 0);
+    background-color: rgba(255, 204, 0, 0.157);
     backdrop-filter: blur(10px);
     color: whitesmoke;
     z-index: 999999;
@@ -64,8 +64,12 @@ body {
 
 .navContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+}
+
+.logo {
+    margin-left: 200px;
 }
 
 .formSearchBar {
@@ -74,10 +78,9 @@ body {
 }
 
 .searchBar {
-    width: 1200px;
+    width: 1100px;
     background-color: rgb(32, 32, 32);
     border: 1px solid rgba(255, 255, 255, 0.217);
-    margin-left: 200px;
 }
 
 .searchBar::placeholder {
@@ -311,13 +314,11 @@ navbar-collapse {
 
 .paginaDettaglioBoxInfo {
     color: whitesmoke;
-    /* background-color: aqua; */
     margin-top: 150px;
 }
 
 .BoxInfoSx {
     margin-left: 250px;
-    /* background-color: blue; */
 }
 
 .centralRankingItem {
@@ -327,9 +328,6 @@ navbar-collapse {
     padding-right: 50px;
 }
 
-/* .BoxInfoDx {
-    background: red;
-} */
 
 .consolleIcons2 {
     font-size: 20px;
@@ -388,7 +386,7 @@ navbar-collapse {
 }
 
 .rating-bar {
-    width: 100%;
+    width: 80%;
     height: 40px;
     background-color: rgba(255, 255, 255, 0.105);
     border-radius: 5px;
@@ -399,7 +397,8 @@ navbar-collapse {
 .rating-fill {
     height: 100%;
     text-align: center;
-    line-height: 20px;
+    line-height: 35px;
+    padding-left: 10px;
     font-size: 14px;
     font-weight: bold;
     color: white;
@@ -413,11 +412,20 @@ navbar-collapse {
     border: 1px solid rgba(255, 255, 255, 0.217);
 }
 
+iframe{
+    margin-left: 10px;
+}
+
+
 /*!! LIVE CHAT */
 .chatContainer {
     padding: 3px;
     border: 1px solid rgba(255, 255, 255, 0.217);
     border-radius: 5px;
+}
+
+.chatBoxGame {
+    margin-left: 140px;
 }
 
 .formChat {
@@ -461,12 +469,9 @@ navbar-collapse {
     border: 1px solid rgba(255, 255, 255, 0.217);
 }
 
-
-
-
-
-
-
+.textoStartChatBox {
+    margin-top: 120px;
+}
 
 /* PROFILO UTENTE */
 
@@ -501,10 +506,11 @@ navbar-collapse {
 
 
 
+@media screen and (max-width: 500px) {
 
-
-
-@media screen and (max-width: 600px) {
+    .logo {
+        margin-left: 0px;
+    }
 
     .navbar-collapse {
         display: block;
@@ -512,7 +518,8 @@ navbar-collapse {
         top: 50px;
         right: 0px;
         width: 100%;
-        background-color: rgb(57, 57, 57);
+        background-color: rgba(255, 204, 0, 0.157);
+        backdrop-filter: blur(10px);
         padding: 15px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.407);
     }
@@ -561,10 +568,79 @@ navbar-collapse {
         border: 1px solid rgba(255, 255, 255, 0.217);
     }
 
+
     /* GAME CARD */
     .gameCardArea {
         width: 100%;
         margin-top: 100px;
+    }
+
+
+    /* PAGINA DETTAGLIO GAME */
+
+    .rowSingleGame {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .paginaDettaglioBoxInfo {
+        color: whitesmoke;
+        margin-top: 70px;
+        padding-right: 0px;
+    }
+
+    .BoxInfoSx {
+        margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        padding-right: 0px;
+    }
+
+    iframe {
+        margin-left: 0px;
+        width: 100%;
+        height: 350px;
+    }
+
+    .screenshotsGame {
+        display: none;
+    }
+
+    .centralRankingItem {
+        border-left: transparent;
+        border-right: transparent;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .rating-bar-container {
+        margin-bottom: 5px;
+    }
+
+    .rating-bar {
+        width: 100%;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.105);
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .rating-fill {
+        height: 100%;
+        text-align: center;
+        line-height: 25px;
+        padding-left: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .chatBoxGame {
+        margin-left: 0px;
     }
 
 }
