@@ -68,7 +68,7 @@ export default function Navbar() {
                     <div className="btn-group authNavEl1">
 
                         <button type="button" className="dropdownUserAuth dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img className='userImg me-2' src={avatarUrl || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="" />
+                            <img className='userImg me-2' src={avatarUrl || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="" />
                             <h6 className='mt-2'>ciao {username} </h6>
                         </button>
 
@@ -120,7 +120,9 @@ export default function Navbar() {
 
                         {user &&
                             <div className='authNavEl'>
-                                <h6>Profilo</h6>
+                                <Link to={`/userProfile`}>
+                                    <h6>Profilo</h6>
+                                </Link>
                                 <h6>Preferiti</h6>
                                 <button
                                     className='logoutBtn'

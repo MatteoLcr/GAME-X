@@ -117,6 +117,7 @@ body {
 }
 
 .authNavEl1 {
+    /* pointer-events: auto; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -658,7 +659,7 @@ iframe {
     }
 
     /* USER PROFILE */
-    .boxInfoUser{
+    .boxInfoUser {
         display: flex;
         flex-direction: column;
         align-items: center;
