@@ -61,7 +61,7 @@ export default function Register() {
             <Navbar />
             <div className="row d-flex flex-column justify-content-center align-items-center vh-100">
                 <Toaster position="top-center" />
-                <div className="col-5">
+                <div className="col-12 col-md-5">
                     <form className="formRegister"
                         onSubmit={HandleRegister}>
 
