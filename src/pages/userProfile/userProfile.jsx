@@ -10,52 +10,30 @@ export default function UserProfile() {
     useEffect(() => {
     }, [favourites]);
 
-
-// console.log(session);
-
     return (
-        <div className="container  d-flex flex-column justify-content-end align-items-end">
+        <div className="container-fluid">
             <div className="row profiloUtenteContainer">
-                <div className="col-10 ms-5">
-                    <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                        </li>
+                <div className="col-11 col-md-6 slotter">
+                    <ul className="nav nav-pills mb-5" id="pills-tab" role="tablist">
                         <li className="nav-item" role="presentation">
                             <button className="nav-link active" id="pills-fav-tab" data-bs-toggle="pill" data-bs-target="#pills-fav" type="button" role="tab" aria-controls="pills-fav" aria-selected="true">Favourites Games</button>
                         </li>
                         <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
                             <button className="nav-link" id="pills-review-tab" data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab" aria-controls="pills-review" aria-selected="false">Review</button>
                         </li>
-
                     </ul>
 
                     <div className="tab-content" id="pills-tabContent">
 
-                        {/* PROFILO */}
-                        <div className="tab-pane fade bg-warning d-flex justify-content-evenly" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-
-                            <img src={session.user.user_metadata.avatar_url} alt="" />
-                            <img
-                                src={session.user.user_metadata.avatar_url
-                                    ? `https://mobodxkiijlcuhicslbi.supabase.co/storage/v1/object/public/avatars/avatars/${session.user.user_metadata.avatar_url}`
-                                    : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
-                                alt=""
-                            />
-                            <div>
-                                <h5>{session.user.user_metadata.first_name}</h5>
-                                <h5>{session.user.user_metadata.last_name}</h5>
-                                <h5>{session.user.user_metadata.username}</h5>
-                                <h5>{session.user.user_metadata.email}</h5>
-                            </div>
-                        </div>
-
                         {/* PREFERITI */}
-                        <div className="tab-pane fade show active" id="pills-fav" role="tabpanel" aria-labelledby="pills-fav-tab" tabIndex="0">
+                        <div className="col-12 tab-pane fade show active" id="pills-fav" role="tabpanel" aria-labelledby="pills-fav-tab" tabIndex="0">
                             {favourites.map((game, index) => (
                                 <div
                                     key={`${game.id}-${index}`}
-                                    className="favItem rounded-2 d-flex justify-content-end my-1 mt-3 align-items-center "
+                                    className="col-12 favItem rounded-2 d-flex justify-content-end my-1 mt-3 align-items-center "
                                     style={{
                                         backgroundImage: `url(${game.game_image})`,
                                         backgroundSize: "cover",
@@ -92,8 +70,35 @@ export default function UserProfile() {
                             ))}
                         </div>
 
+                        {/* PROFILO */}
+                        <div className="boxInfoUser col-12 tab-pane fade d-flex justify-content-evenly " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
+                            <img
+                            className="rounded-circle imgProfiloBoxUser"
+                                src={session?.user?.user_metadata?.avatar_url || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                                alt="User Avatar"
+                            />
+                            <div>
+                                <div>
+                                    <p className="text-secondary">Nome</p>
+                                    <h5>{session.user.user_metadata.first_name}</h5>
+                                </div>
+                                <div>
+                                    <p className="text-secondary">Cognome</p>
+                                    <h5>{session.user.user_metadata.last_name}</h5>
+                                </div>
+                                <div>
+                                    <p className="text-secondary">Username</p>
+                                    <h5>{session.user.user_metadata.username}</h5>
+                                </div>
+                                <div>
+                                    <p className="text-secondary">Email</p>
+                                    <h5>{session.user.user_metadata.email}</h5>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* REVIEW */}
-                        <div className="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab" tabIndex="0">
+                        <div className="col-12 tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab" tabIndex="0">
                             <h3>queste sono le mie review</h3>
                         </div>
 
