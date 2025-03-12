@@ -8,24 +8,31 @@ export default function SideBar() {
     const [platforms, setPlatforms] = useState([])
     const [isOpen, setIsOpen] = useState(false);
     const [selectedGenre, setSelectedGenre] = useState(false);
+    const [selectedConsolle, setSelectedConsolle] = useState(false)
     const location = useLocation();
 
     const importantPlatforms = ["PC", "PlayStation", "Xbox", "Nintendo Switch", "macOS", "Linux", "Android"];
 
+    // FETCH PER I GENERI
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://api.rawg.io/api/genres?key=29c73f1240e84e6cb1a7ade30e62a09c&page=1');
+            const response = await fetch('https://api.rawg.io/api/genres?key=8476cc83304c4692a51e258138e70d70&page=1');
             const data = await response.json();
             setGenres(data.results);
         }
         fetchData();
     }, []);
 
+    // FETCH PER LE CONSOLLE
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://api.rawg.io/api/platforms?key=29c73f1240e84e6cb1a7ade30e62a09c&page=1');
-            const data = await response.json();
-            setPlatforms(data.results);
+            try {
+                const response = await fetch('https://api.rawg.io/api/platforms/lists/parents?key=8476cc83304c4692a51e258138e70d70');
+                const data = await response.json();
+                setPlatforms(data.results);
+            } catch (error) {
+                console.error("Errore nel caricamento delle piattaforme:", error);
+            }
         }
         fetchData();
     }, []);
@@ -35,6 +42,8 @@ export default function SideBar() {
             setSelectedGenre(null);
         }
     }, [location.pathname]);
+
+
 
     return (
         <div className=''>
@@ -68,7 +77,7 @@ export default function SideBar() {
                 </div>
 
                 {/* FILTRO PER CONSOLLE */}
-                <div className='consolleBox d-flex justify-content-center align-content-center'>
+                {/* <div className='consolleBox d-flex justify-content-center align-content-center'>
                     <h3 className="text-warning consolleName">CONSOLE</h3>
                     <div className="consolleList ms-5 mt-3">
                         {platforms
@@ -77,14 +86,16 @@ export default function SideBar() {
                                 <h6 key={platform.id}
                                     className='p-0 m-0'>
                                     <Link
-                                        to={`/games/${platform.slug}`}
-                                        className="d-block text-white text-decoration-none p-2">
+                                        to={`/games/${platform.id}`}
+                                        className={`d-block text-white text-decoration-none p-2 ${location.pathname === `/games/${platform.id}` || selectedConsolle === platform.id ? "text-warning" : "text-white"}`}
+                                        onClick={() => setSelectedConsolle(platform.id)}
+                                    >
                                         {platform.name}
                                     </Link>
                                 </h6>
                             ))}
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

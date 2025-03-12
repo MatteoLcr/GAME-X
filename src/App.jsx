@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 import Layout from "./layout/layout";
 import Home from "./pages/home/home";
 import Category from "./pages/category/category";
+// import Platform from "./pages/platform/platform";
 import Game from "./pages/game/game";
 import SearchResults from "./pages/search/searchResults";
 import Register from "./pages/log_reg/register";
@@ -38,6 +39,7 @@ export function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/games/:category" element={<Category />} />
+          {/* <Route path="/games/:platform" element={<Platform />} /> */}
           <Route path="/search/:query" element={<SearchResults />} />
           <Route path="/show-game/:id/:game" element={<Game />} />
           <Route element={<ProtectedRoute />}>

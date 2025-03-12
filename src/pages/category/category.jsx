@@ -9,7 +9,7 @@ export default function Category() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://api.rawg.io/api/games?key=29c73f1240e84e6cb1a7ade30e62a09c&genres=${category}&page=1&page_size=24&ordering=-added`)
+            const response = await fetch(`https://api.rawg.io/api/games?key=8476cc83304c4692a51e258138e70d70&genres=${category}&page=1&page_size=24&ordering=-added`)
             const data = await response.json()
             setSelectedGenre(data.results)
         }

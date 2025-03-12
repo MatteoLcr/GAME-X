@@ -1,93 +1,75 @@
-import { useState, useEffect, useCallback } from 'react';
-import GameCard from '../../components/gameCard';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useInView } from "react-intersection-observer";
+import { useGlitch } from 'react-powerglitch';
+import GameCard from '../../components/gameCard';
+import logo from '../../assets/logo.png';
 
 export default function Home() {
-    const navigate = useNavigate();
     const [games, setGames] = useState([]);
-    const [pageSize] = useState(20);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const pageSize = 20;
 
-    // const { ref, inView } = useInView({
-    //     threshold: 0.5,
-    // });
+    const glitch = useGlitch({ glitchTimeSpan: false });
 
-    // const fetchData = useCallback(async () => {
-    //     if (loading) return;
-    //     setLoading(true);
-    //     setError(null);
+    const { ref, inView } = useInView({ threshold: 0.5 });
 
-    //     try {
-    //         const response = await fetch(`https://api.rawg.io/api/games?key=29c73f1240e84e6cb1a7ade30e62a09c&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
-    //         const data = await response.json();
 
-    //         if (data.results) {
-    //             setGames(prevGames => {
-    //                 const newGames = [...prevGames, ...data.results];
-    //                 return Array.from(new Map(newGames.map(game => [game.id, game])).values());
-    //             });
-    //         } else {
-    //             throw new Error("Errore nel caricamento dei dati");
-    //         }
-    //     } catch (err) {
-    //         console.error(err);
-    //         setError("Impossibile caricare i giochi. Riprova più tardi.");
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // });
-
-    // useEffect(() => {
-    //     if (inView) {
-    //         setPage(prevPage => prevPage + 1);
-    //     }
-    // }, [inView]);
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, [fetchData]);
 
     useEffect(() => {
         async function fetchData() {
+            if (loading) return;
+            setLoading(true);
+            setError(null);
+
             try {
-                const response = await fetch(`https://api.rawg.io/api/games?key=29c73f1240e84e6cb1a7ade30e62a09c&dates=2019-09-01,2024-12-31&page=1&page_size=24&ordering=-added`);
+                const response = await fetch(`https://api.rawg.io/api/games?key=8476cc83304c4692a51e258138e70d70&dates=2019-09-01,2024-12-31&page=${page}&page_size=${pageSize}&ordering=-added`);
                 const data = await response.json();
-                setGames(data.results);
+
+                if (data.results) {
+                    setGames(prevGames => {
+                        const newGames = [...prevGames, ...data.results];
+                        return Array.from(new Map(newGames.map(game => [game.id, game])).values());
+                    });
+                } else {
+                    throw new Error("Errore nel caricamento dei dati");
+                }
             } catch (err) {
                 console.error(err);
                 setError("Impossibile caricare i giochi. Riprova più tardi.");
+            } finally {
+                setLoading(false);
             }
         }
+
         fetchData();
-    }, []);
+    }, [page]);
 
-
+    useEffect(() => {
+        if (inView && !loading) {
+            setPage(prevPage => prevPage + 1);
+        }
+    }, [inView, loading]);
 
     return (
-        <div className='container-fluid d-flex justify-content-md-end justify-content-center'>
-            <div>
-
-            </div>
-            <div className="row gameCardArea d-flex justify-content-center">
+        <div className='container-fluid d-flex justify-content-md-end justify-content-center mt-5'>
+            <div className="row gameCardArea d-flex justify-content-center mt-5">
+                
                 {games.map((game) => (
-                    <div className="col-12 col-md-3"
-                        key={game.id}>
+                    <div className="col-12 col-md-3" key={game.id}>
                         <GameCard game={game} />
                     </div>
                 ))}
 
                 {error && <p className="text-danger text-center">{error}</p>}
 
-                {loading && (
-                    <div className="col-7 d-flex justify-content-center">
-                        <div className="spinner-border text-primary my-5" role="status" ref={ref}>
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                )}
+                <div className="col-7 d-flex justify-content-center" ref={ref} style={{ marginTop: '300px', marginRight: '150px' }}>
+                    {loading && (
+                        <h1><img src={logo} ref={glitch.ref} style={{ height: '100px' }} /></h1>
+
+                    )}
+                </div>
             </div>
         </div>
     );
