@@ -1,5 +1,3 @@
-# React + Vite
-
 Game-X è un applicazione web sviluppata con React che sfrutta le API di Rawg e permette agli utenti di navigare, cercare giochi e interagire in maniera fluida.
 L'utente ha di base la possibilità di consultare liberamente tutti i giochi, accedendo alla pagina di dettaglio dello stesso, ma, se registrato e quindi autenticato allora potrà avere libero accesso a funzioni come:
 - avere una pagina profilo
